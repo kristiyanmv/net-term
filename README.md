@@ -15,9 +15,12 @@ The device is based on FPGA technology, ensuring low power consumption and reali
 ### Tasks
 - [x] Collect the development kit
 - [x] Setup work environment
-- [ ] Implement USB communication
+- [x] Implement PS/2 Communication
 - [ ] Handle keyboard inputs
 - [ ] Setup a simple logic that controls onboard LEDS from keyboard input
 - [ ] Setup serial interface and confirm that it works.
-- [ ] Select a proper display, implement it if no implementation is available
-- [ ] Design a daughter board that houses all peripheral devices and connections
+- [x] Select a proper display
+- [ ] Implement onboard DDR3 memory R/W functions
+- [ ] Select EEPROM memory for storing font characters
+- [ ] Implement EEPROM memory read function
+- [x] Design a daughter board that houses all peripheral devices and connections
