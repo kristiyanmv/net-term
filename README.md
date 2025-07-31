@@ -16,8 +16,8 @@ The device is based on FPGA technology, ensuring low power consumption and reali
 - [x] Collect the development kit
 - [x] Setup work environment
 - [x] Implement PS/2 Communication
-- [ ] Handle keyboard inputs
-- [ ] Setup a simple logic that controls onboard LEDS from keyboard input
+- [x] Handle keyboard inputs
+- [x] Setup a simple logic that controls onboard LEDS from keyboard input
 - [ ] Setup serial interface and confirm that it works.
 - [x] Select a proper display
 - [ ] Implement onboard DDR3 memory R/W functions
