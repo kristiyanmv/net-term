@@ -1,18 +1,19 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xECE2207F434464F1",
+      "boundary_crc": "0x84DF958CBA993B63",
       "device": "xc7a100tfgg676-1",
       "gen_directory": "../../../../networking-pocket-serial-terminal.gen/sources_1/bd/main_design",
       "name": "main_design",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
-      "synth_flow_mode": "Hierarchical",
+      "synth_flow_mode": "None",
       "tool_version": "2025.1",
       "validated": "true"
     },
     "design_tree": {
       "ps2_keyboard_to_ascii_0": "",
-      "ila_0": ""
+      "ila_0": "",
+      "led_controller_0": ""
     },
     "ports": {
       "clk_0": {
@@ -40,17 +41,38 @@
           }
         }
       },
-      "ps2_clk_0": {
+      "led1": {
+        "type": "data",
+        "direction": "O",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "led2": {
+        "direction": "O"
+      },
+      "ps2_data": {
+        "type": "data",
+        "direction": "I",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "ps2_clk": {
         "type": "clk",
         "direction": "I",
         "parameters": {
           "CLK_DOMAIN": {
-            "value": "main_design_ps2_clk_0",
-            "value_src": "default"
+            "value": "main_design_ps2_clk_0"
           },
           "FREQ_HZ": {
-            "value": "100000000",
-            "value_src": "default"
+            "value": "100000000"
           },
           "FREQ_TOLERANCE_HZ": {
             "value": "0",
@@ -65,9 +87,6 @@
             "value_src": "default"
           }
         }
-      },
-      "ps2_data_0": {
-        "direction": "I"
       }
     },
     "components": {
@@ -101,14 +120,24 @@
             "type": "clk",
             "direction": "I",
             "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "user_prop"
+              },
               "CLK_DOMAIN": {
                 "value": "main_design_ps2_clk_0",
-                "value_src": "default_prop"
+                "value_src": "user_prop"
               }
             }
           },
           "ps2_data": {
-            "direction": "I"
+            "direction": "I",
+            "parameters": {
+              "LAYERED_METADATA": {
+                "value": "undef",
+                "value_src": "default_prop"
+              }
+            }
           },
           "ascii_new": {
             "direction": "O"
@@ -138,6 +167,35 @@
             "value": "7"
           }
         }
+      },
+      "led_controller_0": {
+        "vlnv": "xilinx.com:module_ref:led_controller:1.0",
+        "ip_revision": "1",
+        "xci_name": "main_design_led_controller_0_0",
+        "xci_path": "ip\\main_design_led_controller_0_0\\main_design_led_controller_0_0.xci",
+        "inst_hier_path": "led_controller_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "led_controller",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "new_character": {
+            "direction": "I"
+          },
+          "ascii_code": {
+            "direction": "I",
+            "left": "6",
+            "right": "0"
+          },
+          "led1": {
+            "direction": "O"
+          },
+          "led2": {
+            "direction": "O"
+          }
+        }
       }
     },
     "nets": {
@@ -148,27 +206,41 @@
           "ila_0/clk"
         ]
       },
-      "ps2_clk_0_1": {
+      "led_controller_0_led1": {
         "ports": [
-          "ps2_clk_0",
+          "led_controller_0/led1",
+          "led1"
+        ]
+      },
+      "led_controller_0_led2": {
+        "ports": [
+          "led_controller_0/led2",
+          "led2"
+        ]
+      },
+      "ps2_clk_1": {
+        "ports": [
+          "ps2_clk",
           "ps2_keyboard_to_ascii_0/ps2_clk"
         ]
       },
-      "ps2_data_0_1": {
+      "ps2_data_1": {
         "ports": [
-          "ps2_data_0",
+          "ps2_data",
           "ps2_keyboard_to_ascii_0/ps2_data"
         ]
       },
       "ps2_keyboard_to_ascii_0_ascii_code": {
         "ports": [
           "ps2_keyboard_to_ascii_0/ascii_code",
-          "ila_0/probe0"
+          "ila_0/probe0",
+          "led_controller_0/ascii_code"
         ]
       },
       "ps2_keyboard_to_ascii_0_ascii_new": {
         "ports": [
           "ps2_keyboard_to_ascii_0/ascii_new",
+          "led_controller_0/new_character",
           "ila_0/probe1"
         ]
       }
