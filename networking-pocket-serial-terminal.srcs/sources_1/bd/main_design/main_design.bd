@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x84DF958CBA993B63",
+      "boundary_crc": "0x6EDE71215831DCA6",
       "device": "xc7a100tfgg676-1",
       "gen_directory": "../../../../networking-pocket-serial-terminal.gen/sources_1/bd/main_design",
       "name": "main_design",
@@ -13,7 +13,9 @@
     "design_tree": {
       "ps2_keyboard_to_ascii_0": "",
       "ila_0": "",
-      "led_controller_0": ""
+      "led_controller_0": "",
+      "UART_0": "",
+      "keyboard_handler_0": ""
     },
     "ports": {
       "clk_0": {
@@ -84,6 +86,26 @@
           },
           "PHASE": {
             "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "uart_rx": {
+        "type": "data",
+        "direction": "I",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "uart_tx": {
+        "type": "data",
+        "direction": "O",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
             "value_src": "default"
           }
         }
@@ -161,10 +183,13 @@
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "2"
+            "value": "4"
           },
           "C_PROBE0_WIDTH": {
             "value": "7"
+          },
+          "C_PROBE2_WIDTH": {
+            "value": "8"
           }
         }
       },
@@ -196,14 +221,166 @@
             "direction": "O"
           }
         }
+      },
+      "UART_0": {
+        "vlnv": "xilinx.com:module_ref:UART:1.0",
+        "ip_revision": "1",
+        "xci_name": "main_design_UART_0_0",
+        "xci_path": "ip\\main_design_UART_0_0\\main_design_UART_0_0.xci",
+        "inst_hier_path": "UART_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "UART",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "CLK": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "RST",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "50000000",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "main_design_clk_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "RST": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "UART_TXD": {
+            "direction": "O"
+          },
+          "UART_RXD": {
+            "direction": "I",
+            "parameters": {
+              "LAYERED_METADATA": {
+                "value": "undef",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "DIN": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "DIN_VLD": {
+            "direction": "I"
+          },
+          "DIN_RDY": {
+            "direction": "O"
+          },
+          "DOUT": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "DOUT_VLD": {
+            "direction": "O"
+          },
+          "FRAME_ERROR": {
+            "direction": "O"
+          },
+          "PARITY_ERROR": {
+            "direction": "O"
+          }
+        }
+      },
+      "keyboard_handler_0": {
+        "vlnv": "xilinx.com:module_ref:keyboard_handler:1.0",
+        "ip_revision": "1",
+        "xci_name": "main_design_keyboard_handler_0_0",
+        "xci_path": "ip\\main_design_keyboard_handler_0_0\\main_design_keyboard_handler_0_0.xci",
+        "inst_hier_path": "keyboard_handler_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "keyboard_handler",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "50000000",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "main_design_clk_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "reset_n": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "ascii_code": {
+            "direction": "I",
+            "left": "6",
+            "right": "0"
+          },
+          "ascii_new": {
+            "direction": "I"
+          },
+          "uart_tx": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "uart_send": {
+            "direction": "O"
+          },
+          "uart_ready": {
+            "direction": "I"
+          }
+        }
       }
     },
     "nets": {
+      "UART_0_DIN_RDY": {
+        "ports": [
+          "UART_0/DIN_RDY",
+          "keyboard_handler_0/uart_ready"
+        ]
+      },
+      "UART_0_UART_TXD": {
+        "ports": [
+          "UART_0/UART_TXD",
+          "uart_tx"
+        ]
+      },
       "clk_0_1": {
         "ports": [
           "clk_0",
           "ps2_keyboard_to_ascii_0/clk",
-          "ila_0/clk"
+          "ila_0/clk",
+          "UART_0/CLK",
+          "keyboard_handler_0/clk"
+        ]
+      },
+      "keyboard_handler_0_uart_send": {
+        "ports": [
+          "keyboard_handler_0/uart_send",
+          "UART_0/DIN_VLD"
+        ]
+      },
+      "keyboard_handler_0_uart_tx": {
+        "ports": [
+          "keyboard_handler_0/uart_tx",
+          "UART_0/DIN"
         ]
       },
       "led_controller_0_led1": {
@@ -234,14 +411,22 @@
         "ports": [
           "ps2_keyboard_to_ascii_0/ascii_code",
           "ila_0/probe0",
-          "led_controller_0/ascii_code"
+          "led_controller_0/ascii_code",
+          "keyboard_handler_0/ascii_code"
         ]
       },
       "ps2_keyboard_to_ascii_0_ascii_new": {
         "ports": [
           "ps2_keyboard_to_ascii_0/ascii_new",
+          "ila_0/probe1",
           "led_controller_0/new_character",
-          "ila_0/probe1"
+          "keyboard_handler_0/ascii_new"
+        ]
+      },
+      "uart_rx_1": {
+        "ports": [
+          "uart_rx",
+          "UART_0/UART_RXD"
         ]
       }
     }
