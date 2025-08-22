@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x6EDE71215831DCA6",
+      "boundary_crc": "0x32CEA9D7C2C81CEC",
       "device": "xc7a100tfgg676-1",
       "gen_directory": "../../../../networking-pocket-serial-terminal.gen/sources_1/bd/main_design",
       "name": "main_design",
@@ -15,7 +15,9 @@
       "ila_0": "",
       "led_controller_0": "",
       "UART_0": "",
-      "keyboard_handler_0": ""
+      "keyboard_handler_0": "",
+      "lcd_driver_de_nv3047_0": "",
+      "clk_wiz_0": ""
     },
     "ports": {
       "clk_0": {
@@ -109,6 +111,62 @@
             "value_src": "default"
           }
         }
+      },
+      "red_0": {
+        "direction": "O",
+        "left": "7",
+        "right": "0"
+      },
+      "green_0": {
+        "direction": "O",
+        "left": "7",
+        "right": "0"
+      },
+      "blue_0": {
+        "direction": "O",
+        "left": "7",
+        "right": "0"
+      },
+      "enable_0": {
+        "direction": "O"
+      },
+      "clk_1": {
+        "type": "clk",
+        "direction": "O",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "main_design_lcd_driver_de_nv3047_0_1_clk",
+            "value_src": "default_prop"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "hsync_0": {
+        "direction": "O"
+      },
+      "vsync_0": {
+        "direction": "O"
+      },
+      "data_enable_0": {
+        "direction": "O"
+      },
+      "backlight_0": {
+        "direction": "O"
       }
     },
     "components": {
@@ -183,13 +241,13 @@
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "4"
+            "value": "2"
           },
           "C_PROBE0_WIDTH": {
             "value": "7"
           },
           "C_PROBE2_WIDTH": {
-            "value": "8"
+            "value": "1"
           }
         }
       },
@@ -347,6 +405,165 @@
             "direction": "I"
           }
         }
+      },
+      "lcd_driver_de_nv3047_0": {
+        "vlnv": "xilinx.com:module_ref:lcd_driver_de_nv3047:1.0",
+        "ip_revision": "1",
+        "xci_name": "main_design_lcd_driver_de_nv3047_0_1",
+        "xci_path": "ip\\main_design_lcd_driver_de_nv3047_0_1\\main_design_lcd_driver_de_nv3047_0_1.xci",
+        "inst_hier_path": "lcd_driver_de_nv3047_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "lcd_driver_de_nv3047",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "red": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "green": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "blue": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "enable": {
+            "direction": "O"
+          },
+          "clk": {
+            "type": "clk",
+            "direction": "O"
+          },
+          "hsync": {
+            "direction": "O"
+          },
+          "vsync": {
+            "direction": "O"
+          },
+          "data_enable": {
+            "direction": "O"
+          },
+          "backlight": {
+            "direction": "O"
+          },
+          "master_clock": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "50000000",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "main_design_clk_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "dclk_in": {
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "9000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "main_design_clk_0",
+                "value_src": "ip_prop"
+              }
+            }
+          }
+        }
+      },
+      "clk_wiz_0": {
+        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
+        "ip_revision": "16",
+        "xci_name": "main_design_clk_wiz_0_0",
+        "xci_path": "ip\\main_design_clk_wiz_0_0\\main_design_clk_wiz_0_0.xci",
+        "inst_hier_path": "clk_wiz_0",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "CLKIN1_JITTER_PS": {
+            "value": "200.0"
+          },
+          "CLKOUT1_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT1_JITTER": {
+            "value": "302.798"
+          },
+          "CLKOUT1_PHASE_ERROR": {
+            "value": "161.614"
+          },
+          "CLKOUT1_REQUESTED_OUT_FREQ": {
+            "value": "9"
+          },
+          "CLKOUT2_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT3_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT4_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT5_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT6_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT7_DRIVES": {
+            "value": "BUFG"
+          },
+          "MMCM_BANDWIDTH": {
+            "value": "OPTIMIZED"
+          },
+          "MMCM_CLKFBOUT_MULT_F": {
+            "value": "18"
+          },
+          "MMCM_CLKIN1_PERIOD": {
+            "value": "20.000"
+          },
+          "MMCM_CLKIN2_PERIOD": {
+            "value": "10.0"
+          },
+          "MMCM_CLKOUT0_DIVIDE_F": {
+            "value": "100"
+          },
+          "MMCM_COMPENSATION": {
+            "value": "ZHOLD"
+          },
+          "PLL_CLKIN_PERIOD": {
+            "value": "20.000"
+          },
+          "PRIMITIVE": {
+            "value": "PLL"
+          },
+          "PRIM_IN_FREQ": {
+            "value": "50"
+          },
+          "PRIM_SOURCE": {
+            "value": "No_buffer"
+          },
+          "USE_LOCKED": {
+            "value": "false"
+          },
+          "USE_RESET": {
+            "value": "false"
+          }
+        }
       }
     },
     "nets": {
@@ -368,7 +585,15 @@
           "ps2_keyboard_to_ascii_0/clk",
           "ila_0/clk",
           "UART_0/CLK",
-          "keyboard_handler_0/clk"
+          "keyboard_handler_0/clk",
+          "clk_wiz_0/clk_in1",
+          "lcd_driver_de_nv3047_0/master_clock"
+        ]
+      },
+      "clk_wiz_0_clk_out1": {
+        "ports": [
+          "clk_wiz_0/clk_out1",
+          "lcd_driver_de_nv3047_0/dclk_in"
         ]
       },
       "keyboard_handler_0_uart_send": {
@@ -381,6 +606,60 @@
         "ports": [
           "keyboard_handler_0/uart_tx",
           "UART_0/DIN"
+        ]
+      },
+      "lcd_driver_de_nv3047_0_backlight": {
+        "ports": [
+          "lcd_driver_de_nv3047_0/backlight",
+          "backlight_0"
+        ]
+      },
+      "lcd_driver_de_nv3047_0_blue": {
+        "ports": [
+          "lcd_driver_de_nv3047_0/blue",
+          "blue_0"
+        ]
+      },
+      "lcd_driver_de_nv3047_0_clk": {
+        "ports": [
+          "lcd_driver_de_nv3047_0/clk",
+          "clk_1"
+        ]
+      },
+      "lcd_driver_de_nv3047_0_data_enable": {
+        "ports": [
+          "lcd_driver_de_nv3047_0/data_enable",
+          "data_enable_0"
+        ]
+      },
+      "lcd_driver_de_nv3047_0_enable": {
+        "ports": [
+          "lcd_driver_de_nv3047_0/enable",
+          "enable_0"
+        ]
+      },
+      "lcd_driver_de_nv3047_0_green": {
+        "ports": [
+          "lcd_driver_de_nv3047_0/green",
+          "green_0"
+        ]
+      },
+      "lcd_driver_de_nv3047_0_hsync": {
+        "ports": [
+          "lcd_driver_de_nv3047_0/hsync",
+          "hsync_0"
+        ]
+      },
+      "lcd_driver_de_nv3047_0_red": {
+        "ports": [
+          "lcd_driver_de_nv3047_0/red",
+          "red_0"
+        ]
+      },
+      "lcd_driver_de_nv3047_0_vsync": {
+        "ports": [
+          "lcd_driver_de_nv3047_0/vsync",
+          "vsync_0"
         ]
       },
       "led_controller_0_led1": {
