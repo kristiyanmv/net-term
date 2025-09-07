@@ -1,7 +1,7 @@
-networking-pocket-serial-terminal.cache/
-networking-pocket-serial-terminal.gen/
-networking-pocket-serial-terminal.hw/
-networking-pocket-serial-terminal.ip_user_files/
-networking-pocket-serial-terminal.ioplanning/
-networking-pocket-serial-terminal.runs/
-networking-pocket-serial-terminal.sim/
+net-term.cache/
+net-term.gen/
+net-term.hw/
+net-term.ip_user_files/
+net-term.ioplanning/
+net-term.runs/
+net-term.sim/
