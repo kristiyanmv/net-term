@@ -5,7 +5,7 @@
     "cell_name": "led_controller_0",
     "component_reference": "xilinx.com:module_ref:led_controller:1.0",
     "ip_revision": "1",
-    "gen_directory": "../../../../../../networking-pocket-serial-terminal.gen/sources_1/bd/main_design/ip/main_design_led_controller_0_0",
+    "gen_directory": "../../../../../../net-term.gen/sources_1/bd/main_design/ip/main_design_led_controller_0_0",
     "parameters": {
       "component_parameters": {
         "Component_Name": [ { "value": "main_design_led_controller_0_0", "resolve_type": "user", "usage": "all" } ]
@@ -27,7 +27,7 @@
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
         "IPREVISION": [ { "value": "1" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../../../networking-pocket-serial-terminal.gen/sources_1/bd/main_design/ip/main_design_led_controller_0_0" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../net-term.gen/sources_1/bd/main_design/ip/main_design_led_controller_0_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
         "SWVERSION": [ { "value": "2025.1" } ],

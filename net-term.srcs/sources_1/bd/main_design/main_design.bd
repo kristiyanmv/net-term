@@ -3,7 +3,7 @@
     "design_info": {
       "boundary_crc": "0x32CEA9D7C2C81CEC",
       "device": "xc7a100tfgg676-1",
-      "gen_directory": "../../../../networking-pocket-serial-terminal.gen/sources_1/bd/main_design",
+      "gen_directory": "../../../../net-term.gen/sources_1/bd/main_design",
       "name": "main_design",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "None",
@@ -12,12 +12,12 @@
     },
     "design_tree": {
       "ps2_keyboard_to_ascii_0": "",
-      "ila_0": "",
       "led_controller_0": "",
       "UART_0": "",
       "keyboard_handler_0": "",
-      "lcd_driver_de_nv3047_0": "",
-      "clk_wiz_0": ""
+      "clk_wiz_0": "",
+      "blk_mem_gen_0": "",
+      "lcd_driver_de_nv3047_0": ""
     },
     "ports": {
       "clk_0": {
@@ -135,7 +135,7 @@
         "direction": "O",
         "parameters": {
           "CLK_DOMAIN": {
-            "value": "main_design_lcd_driver_de_nv3047_0_1_clk",
+            "value": "main_design_lcd_driver_de_nv3047_0_2_clk",
             "value_src": "default_prop"
           },
           "FREQ_HZ": {
@@ -178,7 +178,7 @@
         "inst_hier_path": "ps2_keyboard_to_ascii_0",
         "has_run_ip_tcl": "true",
         "reference_info": {
-          "ref_type": "unknown",
+          "ref_type": "hdl",
           "ref_name": "ps2_keyboard_to_ascii",
           "boundary_crc": "0x0"
         },
@@ -229,28 +229,6 @@
           }
         }
       },
-      "ila_0": {
-        "vlnv": "xilinx.com:ip:ila:6.2",
-        "ip_revision": "18",
-        "xci_name": "main_design_ila_0_1",
-        "xci_path": "ip\\main_design_ila_0_1\\main_design_ila_0_1.xci",
-        "inst_hier_path": "ila_0",
-        "has_run_ip_tcl": "true",
-        "parameters": {
-          "C_MONITOR_TYPE": {
-            "value": "Native"
-          },
-          "C_NUM_OF_PROBES": {
-            "value": "2"
-          },
-          "C_PROBE0_WIDTH": {
-            "value": "7"
-          },
-          "C_PROBE2_WIDTH": {
-            "value": "1"
-          }
-        }
-      },
       "led_controller_0": {
         "vlnv": "xilinx.com:module_ref:led_controller:1.0",
         "ip_revision": "1",
@@ -259,7 +237,7 @@
         "inst_hier_path": "led_controller_0",
         "has_run_ip_tcl": "true",
         "reference_info": {
-          "ref_type": "unknown",
+          "ref_type": "hdl",
           "ref_name": "led_controller",
           "boundary_crc": "0x0"
         },
@@ -288,7 +266,7 @@
         "inst_hier_path": "UART_0",
         "has_run_ip_tcl": "true",
         "reference_info": {
-          "ref_type": "unknown",
+          "ref_type": "hdl",
           "ref_name": "UART",
           "boundary_crc": "0x0"
         },
@@ -362,7 +340,7 @@
         "inst_hier_path": "keyboard_handler_0",
         "has_run_ip_tcl": "true",
         "reference_info": {
-          "ref_type": "unknown",
+          "ref_type": "hdl",
           "ref_name": "keyboard_handler",
           "boundary_crc": "0x0"
         },
@@ -403,86 +381,6 @@
           },
           "uart_ready": {
             "direction": "I"
-          }
-        }
-      },
-      "lcd_driver_de_nv3047_0": {
-        "vlnv": "xilinx.com:module_ref:lcd_driver_de_nv3047:1.0",
-        "ip_revision": "1",
-        "xci_name": "main_design_lcd_driver_de_nv3047_0_1",
-        "xci_path": "ip\\main_design_lcd_driver_de_nv3047_0_1\\main_design_lcd_driver_de_nv3047_0_1.xci",
-        "inst_hier_path": "lcd_driver_de_nv3047_0",
-        "has_run_ip_tcl": "true",
-        "reference_info": {
-          "ref_type": "unknown",
-          "ref_name": "lcd_driver_de_nv3047",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "red": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          },
-          "green": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          },
-          "blue": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          },
-          "enable": {
-            "direction": "O"
-          },
-          "clk": {
-            "type": "clk",
-            "direction": "O"
-          },
-          "hsync": {
-            "direction": "O"
-          },
-          "vsync": {
-            "direction": "O"
-          },
-          "data_enable": {
-            "direction": "O"
-          },
-          "backlight": {
-            "direction": "O"
-          },
-          "master_clock": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "50000000",
-                "value_src": "user_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "main_design_clk_0",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "dclk_in": {
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "9000000",
-                "value_src": "ip_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "ip_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "main_design_clk_0",
-                "value_src": "ip_prop"
-              }
-            }
           }
         }
       },
@@ -564,9 +462,157 @@
             "value": "false"
           }
         }
+      },
+      "blk_mem_gen_0": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "ip_revision": "11",
+        "xci_name": "main_design_blk_mem_gen_0_0",
+        "xci_path": "ip\\main_design_blk_mem_gen_0_0\\main_design_blk_mem_gen_0_0.xci",
+        "inst_hier_path": "blk_mem_gen_0",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "Coe_File": {
+            "value": "../../../../test_data/checkerboard.coe"
+          },
+          "Enable_A": {
+            "value": "Use_ENA_Pin"
+          },
+          "Fill_Remaining_Memory_Locations": {
+            "value": "false"
+          },
+          "Load_Init_File": {
+            "value": "true"
+          },
+          "Memory_Type": {
+            "value": "Simple_Dual_Port_RAM"
+          },
+          "Operating_Mode_A": {
+            "value": "NO_CHANGE"
+          },
+          "Register_PortB_Output_of_Memory_Primitives": {
+            "value": "true"
+          },
+          "Use_Byte_Write_Enable": {
+            "value": "false"
+          },
+          "Write_Depth_A": {
+            "value": "4080"
+          },
+          "Write_Width_A": {
+            "value": "32"
+          },
+          "Write_Width_B": {
+            "value": "32"
+          },
+          "ecctype": {
+            "value": "No_ECC"
+          },
+          "use_bram_block": {
+            "value": "Stand_Alone"
+          }
+        }
+      },
+      "lcd_driver_de_nv3047_0": {
+        "vlnv": "xilinx.com:module_ref:lcd_driver_de_nv3047_with_bram:1.0",
+        "ip_revision": "1",
+        "xci_name": "main_design_lcd_driver_de_nv3047_0_2",
+        "xci_path": "ip\\main_design_lcd_driver_de_nv3047_0_2\\main_design_lcd_driver_de_nv3047_0_2.xci",
+        "inst_hier_path": "lcd_driver_de_nv3047_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "lcd_driver_de_nv3047_with_bram",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "red": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "green": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "blue": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "enable": {
+            "direction": "O"
+          },
+          "clk": {
+            "type": "clk",
+            "direction": "O"
+          },
+          "hsync": {
+            "direction": "O"
+          },
+          "vsync": {
+            "direction": "O"
+          },
+          "data_enable": {
+            "direction": "O"
+          },
+          "backlight": {
+            "direction": "O"
+          },
+          "master_clock": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "50000000",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "main_design_clk_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "dclk_in": {
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "9000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "main_design_clk_0",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "fb_addra": {
+            "direction": "O",
+            "left": "11",
+            "right": "0"
+          },
+          "bram_douta": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "bram_enable": {
+            "direction": "O"
+          }
+        }
       }
     },
     "nets": {
+      "Net": {
+        "ports": [
+          "lcd_driver_de_nv3047_0/bram_enable",
+          "blk_mem_gen_0/enb"
+        ]
+      },
       "UART_0_DIN_RDY": {
         "ports": [
           "UART_0/DIN_RDY",
@@ -579,11 +625,16 @@
           "uart_tx"
         ]
       },
+      "blk_mem_gen_0_doutb": {
+        "ports": [
+          "blk_mem_gen_0/doutb",
+          "lcd_driver_de_nv3047_0/bram_douta"
+        ]
+      },
       "clk_0_1": {
         "ports": [
           "clk_0",
           "ps2_keyboard_to_ascii_0/clk",
-          "ila_0/clk",
           "UART_0/CLK",
           "keyboard_handler_0/clk",
           "clk_wiz_0/clk_in1",
@@ -593,6 +644,7 @@
       "clk_wiz_0_clk_out1": {
         "ports": [
           "clk_wiz_0/clk_out1",
+          "blk_mem_gen_0/clkb",
           "lcd_driver_de_nv3047_0/dclk_in"
         ]
       },
@@ -636,6 +688,12 @@
         "ports": [
           "lcd_driver_de_nv3047_0/enable",
           "enable_0"
+        ]
+      },
+      "lcd_driver_de_nv3047_0_fb_addra": {
+        "ports": [
+          "lcd_driver_de_nv3047_0/fb_addra",
+          "blk_mem_gen_0/addrb"
         ]
       },
       "lcd_driver_de_nv3047_0_green": {
@@ -689,7 +747,6 @@
       "ps2_keyboard_to_ascii_0_ascii_code": {
         "ports": [
           "ps2_keyboard_to_ascii_0/ascii_code",
-          "ila_0/probe0",
           "led_controller_0/ascii_code",
           "keyboard_handler_0/ascii_code"
         ]
@@ -697,7 +754,6 @@
       "ps2_keyboard_to_ascii_0_ascii_new": {
         "ports": [
           "ps2_keyboard_to_ascii_0/ascii_new",
-          "ila_0/probe1",
           "led_controller_0/new_character",
           "keyboard_handler_0/ascii_new"
         ]

@@ -5,7 +5,7 @@
     "cell_name": "UART_0",
     "component_reference": "xilinx.com:module_ref:UART:1.0",
     "ip_revision": "1",
-    "gen_directory": "../../../../../../networking-pocket-serial-terminal.gen/sources_1/bd/main_design/ip/main_design_UART_0_0",
+    "gen_directory": "../../../../../../net-term.gen/sources_1/bd/main_design/ip/main_design_UART_0_0",
     "parameters": {
       "component_parameters": {
         "CLK_FREQ": [ { "value": "50000000", "resolve_type": "user", "format": "long", "usage": "all" } ],
@@ -37,7 +37,7 @@
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
         "IPREVISION": [ { "value": "1" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../../../networking-pocket-serial-terminal.gen/sources_1/bd/main_design/ip/main_design_UART_0_0" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../net-term.gen/sources_1/bd/main_design/ip/main_design_UART_0_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
         "SWVERSION": [ { "value": "2025.1" } ],

@@ -5,7 +5,7 @@
     "cell_name": "ps2_keyboard_to_ascii_0",
     "component_reference": "xilinx.com:module_ref:ps2_keyboard_to_ascii:1.0",
     "ip_revision": "1",
-    "gen_directory": "../../../../../../networking-pocket-serial-terminal.gen/sources_1/bd/main_design/ip/main_design_ps2_keyboard_to_ascii_0_0_1",
+    "gen_directory": "../../../../../../net-term.gen/sources_1/bd/main_design/ip/main_design_ps2_keyboard_to_ascii_0_0_1",
     "parameters": {
       "component_parameters": {
         "clk_freq": [ { "value": "50000000", "resolve_type": "user", "format": "long", "usage": "all" } ],
@@ -33,7 +33,7 @@
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
         "IPREVISION": [ { "value": "1" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../../../networking-pocket-serial-terminal.gen/sources_1/bd/main_design/ip/main_design_ps2_keyboard_to_ascii_0_0_1" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../net-term.gen/sources_1/bd/main_design/ip/main_design_ps2_keyboard_to_ascii_0_0_1" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
         "SWVERSION": [ { "value": "2025.1" } ],
