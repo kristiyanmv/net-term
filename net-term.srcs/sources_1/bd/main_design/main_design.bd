@@ -728,7 +728,7 @@
           },
           "font_addr": {
             "direction": "O",
-            "left": "9",
+            "left": "10",
             "right": "0"
           },
           "font_dout": {
