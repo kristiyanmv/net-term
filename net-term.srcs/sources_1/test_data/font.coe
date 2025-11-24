@@ -1,0 +1,5 @@
+; font.coe - Placeholder 8x16 font (one byte per row)
+; Each glyph (0x00..0x7F) uses 16 rows; each row byte equals the glyph code (repeat)
+memory_initialization_radix=16;
+memory_initialization_vector=
+FF,FF,FF,FF,FF,FF,FF,FF,FF

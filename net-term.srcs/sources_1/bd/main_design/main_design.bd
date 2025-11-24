@@ -14,10 +14,16 @@
       "ps2_keyboard_to_ascii_0": "",
       "led_controller_0": "",
       "UART_0": "",
-      "keyboard_handler_0": "",
       "clk_wiz_0": "",
       "blk_mem_gen_0": "",
-      "lcd_driver_de_nv3047_0": ""
+      "lcd_driver_de_nv3047_0": "",
+      "data_handler_0": "",
+      "blk_mem_gen_1": "",
+      "frame_builder_0": "",
+      "blk_mem_gen_2": "",
+      "ila_0": "",
+      "ila_1": "",
+      "ila_2": ""
     },
     "ports": {
       "clk_0": {
@@ -332,58 +338,6 @@
           }
         }
       },
-      "keyboard_handler_0": {
-        "vlnv": "xilinx.com:module_ref:keyboard_handler:1.0",
-        "ip_revision": "1",
-        "xci_name": "main_design_keyboard_handler_0_0",
-        "xci_path": "ip\\main_design_keyboard_handler_0_0\\main_design_keyboard_handler_0_0.xci",
-        "inst_hier_path": "keyboard_handler_0",
-        "has_run_ip_tcl": "true",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "keyboard_handler",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "50000000",
-                "value_src": "user_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "main_design_clk_0",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "reset_n": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "ascii_code": {
-            "direction": "I",
-            "left": "6",
-            "right": "0"
-          },
-          "ascii_new": {
-            "direction": "I"
-          },
-          "uart_tx": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          },
-          "uart_send": {
-            "direction": "O"
-          },
-          "uart_ready": {
-            "direction": "I"
-          }
-        }
-      },
       "clk_wiz_0": {
         "vlnv": "xilinx.com:ip:clk_wiz:6.0",
         "ip_revision": "16",
@@ -471,9 +425,6 @@
         "inst_hier_path": "blk_mem_gen_0",
         "has_run_ip_tcl": "true",
         "parameters": {
-          "Coe_File": {
-            "value": "../../../../test_data/checkerboard.coe"
-          },
           "Enable_A": {
             "value": "Use_ENA_Pin"
           },
@@ -481,10 +432,10 @@
             "value": "false"
           },
           "Load_Init_File": {
-            "value": "true"
+            "value": "false"
           },
           "Memory_Type": {
-            "value": "Simple_Dual_Port_RAM"
+            "value": "True_Dual_Port_RAM"
           },
           "Operating_Mode_A": {
             "value": "NO_CHANGE"
@@ -503,9 +454,6 @@
           },
           "Write_Width_B": {
             "value": "32"
-          },
-          "ecctype": {
-            "value": "No_ECC"
           },
           "use_bram_block": {
             "value": "Stand_Alone"
@@ -604,6 +552,336 @@
             "direction": "O"
           }
         }
+      },
+      "data_handler_0": {
+        "vlnv": "xilinx.com:module_ref:data_handler:1.0",
+        "ip_revision": "1",
+        "xci_name": "main_design_data_handler_0_0",
+        "xci_path": "ip\\main_design_data_handler_0_0\\main_design_data_handler_0_0.xci",
+        "inst_hier_path": "data_handler_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "data_handler",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "50000000",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "main_design_clk_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "ascii_new": {
+            "direction": "I"
+          },
+          "ascii_code": {
+            "direction": "I",
+            "left": "6",
+            "right": "0"
+          },
+          "bram_addra": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          },
+          "bram_dina": {
+            "direction": "O",
+            "left": "479",
+            "right": "0"
+          },
+          "bram_douta": {
+            "direction": "I",
+            "left": "479",
+            "right": "0"
+          },
+          "bram_ena": {
+            "direction": "O"
+          },
+          "bram_wea": {
+            "direction": "O",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "default_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "default_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "main_design_data_handler_0_0_bram_clk",
+                "value_src": "default_prop"
+              }
+            }
+          }
+        }
+      },
+      "blk_mem_gen_1": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "ip_revision": "11",
+        "xci_name": "main_design_blk_mem_gen_1_0",
+        "xci_path": "ip\\main_design_blk_mem_gen_1_0\\main_design_blk_mem_gen_1_0.xci",
+        "inst_hier_path": "blk_mem_gen_1",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "Fill_Remaining_Memory_Locations": {
+            "value": "true"
+          },
+          "Load_Init_File": {
+            "value": "false"
+          },
+          "Memory_Type": {
+            "value": "True_Dual_Port_RAM"
+          },
+          "Write_Depth_A": {
+            "value": "17"
+          },
+          "Write_Width_A": {
+            "value": "480"
+          },
+          "use_bram_block": {
+            "value": "Stand_Alone"
+          }
+        }
+      },
+      "frame_builder_0": {
+        "vlnv": "xilinx.com:module_ref:frame_builder:1.0",
+        "ip_revision": "1",
+        "xci_name": "main_design_frame_builder_0_0",
+        "xci_path": "ip\\main_design_frame_builder_0_0\\main_design_frame_builder_0_0.xci",
+        "inst_hier_path": "frame_builder_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "frame_builder",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "50000000",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "main_design_clk_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "fb_ram_clk": {
+            "type": "clk",
+            "direction": "O"
+          },
+          "fb_ram_addr": {
+            "direction": "O",
+            "left": "11",
+            "right": "0"
+          },
+          "fb_ram_dout": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "fb_ram_ena": {
+            "direction": "O",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "default_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "default_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "main_design_frame_builder_0_0_font_bram_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "fb_ram_wea": {
+            "direction": "O"
+          },
+          "font_bram_clk": {
+            "type": "clk",
+            "direction": "O"
+          },
+          "font_addr": {
+            "direction": "O",
+            "left": "9",
+            "right": "0"
+          },
+          "font_dout": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "font_ena": {
+            "direction": "O"
+          },
+          "text_bram_addr": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          },
+          "text_bram_dout": {
+            "direction": "I",
+            "left": "479",
+            "right": "0"
+          },
+          "text_bram_ena": {
+            "direction": "O",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "default_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "default_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "main_design_frame_builder_0_0_fb_ram_clk",
+                "value_src": "default_prop"
+              }
+            }
+          }
+        }
+      },
+      "blk_mem_gen_2": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "ip_revision": "11",
+        "xci_name": "main_design_blk_mem_gen_2_0",
+        "xci_path": "ip\\main_design_blk_mem_gen_2_0\\main_design_blk_mem_gen_2_0.xci",
+        "inst_hier_path": "blk_mem_gen_2",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "Coe_File": {
+            "value": "../../../../test_data/font.coe"
+          },
+          "Fill_Remaining_Memory_Locations": {
+            "value": "false"
+          },
+          "Load_Init_File": {
+            "value": "true"
+          },
+          "Memory_Type": {
+            "value": "Single_Port_ROM"
+          },
+          "Write_Depth_A": {
+            "value": "2048"
+          },
+          "Write_Width_A": {
+            "value": "8"
+          },
+          "use_bram_block": {
+            "value": "Stand_Alone"
+          }
+        }
+      },
+      "ila_0": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "ip_revision": "18",
+        "xci_name": "main_design_ila_0_0",
+        "xci_path": "ip\\main_design_ila_0_0\\main_design_ila_0_0.xci",
+        "inst_hier_path": "ila_0",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "C_MONITOR_TYPE": {
+            "value": "Native"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "10"
+          },
+          "C_PROBE0_WIDTH": {
+            "value": "8"
+          },
+          "C_PROBE1_WIDTH": {
+            "value": "480"
+          },
+          "C_PROBE2_WIDTH": {
+            "value": "1"
+          },
+          "C_PROBE3_WIDTH": {
+            "value": "12"
+          },
+          "C_PROBE4_WIDTH": {
+            "value": "32"
+          },
+          "C_PROBE6_WIDTH": {
+            "value": "11"
+          },
+          "C_PROBE7_WIDTH": {
+            "value": "5"
+          }
+        }
+      },
+      "ila_1": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "ip_revision": "18",
+        "xci_name": "main_design_ila_1_0",
+        "xci_path": "ip\\main_design_ila_1_0\\main_design_ila_1_0.xci",
+        "inst_hier_path": "ila_1",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "C_MONITOR_TYPE": {
+            "value": "Native"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "6"
+          },
+          "C_PROBE0_WIDTH": {
+            "value": "480"
+          },
+          "C_PROBE1_WIDTH": {
+            "value": "7"
+          },
+          "C_PROBE5_WIDTH": {
+            "value": "4"
+          }
+        }
+      },
+      "ila_2": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "ip_revision": "18",
+        "xci_name": "main_design_ila_2_0",
+        "xci_path": "ip\\main_design_ila_2_0\\main_design_ila_2_0.xci",
+        "inst_hier_path": "ila_2",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "C_MONITOR_TYPE": {
+            "value": "Native"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "2"
+          },
+          "C_PROBE0_WIDTH": {
+            "value": "12"
+          },
+          "C_PROBE1_WIDTH": {
+            "value": "32"
+          }
+        }
       }
     },
     "nets": {
@@ -613,10 +891,26 @@
           "blk_mem_gen_0/enb"
         ]
       },
+      "Net1": {
+        "ports": [
+          "blk_mem_gen_2/douta",
+          "ila_0/probe0",
+          "frame_builder_0/font_dout"
+        ]
+      },
       "UART_0_DIN_RDY": {
         "ports": [
-          "UART_0/DIN_RDY",
-          "keyboard_handler_0/uart_ready"
+          "UART_0/DIN_RDY"
+        ]
+      },
+      "UART_0_DOUT": {
+        "ports": [
+          "UART_0/DOUT"
+        ]
+      },
+      "UART_0_DOUT_VLD": {
+        "ports": [
+          "UART_0/DOUT_VLD"
         ]
       },
       "UART_0_UART_TXD": {
@@ -628,7 +922,21 @@
       "blk_mem_gen_0_doutb": {
         "ports": [
           "blk_mem_gen_0/doutb",
+          "ila_2/probe1",
           "lcd_driver_de_nv3047_0/bram_douta"
+        ]
+      },
+      "blk_mem_gen_1_douta": {
+        "ports": [
+          "blk_mem_gen_1/douta",
+          "data_handler_0/bram_douta"
+        ]
+      },
+      "blk_mem_gen_1_doutb": {
+        "ports": [
+          "blk_mem_gen_1/doutb",
+          "ila_0/probe1",
+          "frame_builder_0/text_bram_dout"
         ]
       },
       "clk_0_1": {
@@ -636,28 +944,118 @@
           "clk_0",
           "ps2_keyboard_to_ascii_0/clk",
           "UART_0/CLK",
-          "keyboard_handler_0/clk",
           "clk_wiz_0/clk_in1",
-          "lcd_driver_de_nv3047_0/master_clock"
+          "blk_mem_gen_1/clkb",
+          "ila_0/clk",
+          "ila_1/clk",
+          "blk_mem_gen_1/clka",
+          "data_handler_0/clk",
+          "blk_mem_gen_2/clka",
+          "blk_mem_gen_0/clka",
+          "lcd_driver_de_nv3047_0/master_clock",
+          "frame_builder_0/clk"
         ]
       },
       "clk_wiz_0_clk_out1": {
         "ports": [
           "clk_wiz_0/clk_out1",
           "blk_mem_gen_0/clkb",
+          "ila_2/clk",
           "lcd_driver_de_nv3047_0/dclk_in"
         ]
       },
-      "keyboard_handler_0_uart_send": {
+      "data_handler_0_bram_addra": {
         "ports": [
-          "keyboard_handler_0/uart_send",
+          "data_handler_0/bram_addra",
+          "blk_mem_gen_1/addra",
+          "ila_1/probe5"
+        ]
+      },
+      "data_handler_0_bram_dina": {
+        "ports": [
+          "data_handler_0/bram_dina",
+          "blk_mem_gen_1/dina",
+          "ila_1/probe0"
+        ]
+      },
+      "data_handler_0_bram_ena": {
+        "ports": [
+          "data_handler_0/bram_ena",
+          "blk_mem_gen_1/ena",
+          "ila_1/probe4"
+        ]
+      },
+      "data_handler_0_bram_wea": {
+        "ports": [
+          "data_handler_0/bram_wea",
+          "blk_mem_gen_1/wea",
+          "ila_1/probe3"
+        ]
+      },
+      "data_handler_0_uart_tx_data": {
+        "ports": [
+          "UART_0/DIN"
+        ]
+      },
+      "data_handler_0_uart_tx_start": {
+        "ports": [
           "UART_0/DIN_VLD"
         ]
       },
-      "keyboard_handler_0_uart_tx": {
+      "frame_builder_0_fb_ram_addr": {
         "ports": [
-          "keyboard_handler_0/uart_tx",
-          "UART_0/DIN"
+          "frame_builder_0/fb_ram_addr",
+          "blk_mem_gen_0/addra",
+          "ila_0/probe3"
+        ]
+      },
+      "frame_builder_0_fb_ram_dout": {
+        "ports": [
+          "frame_builder_0/fb_ram_dout",
+          "blk_mem_gen_0/dina",
+          "ila_0/probe4"
+        ]
+      },
+      "frame_builder_0_fb_ram_ena": {
+        "ports": [
+          "frame_builder_0/fb_ram_ena",
+          "blk_mem_gen_0/ena",
+          "ila_0/probe5"
+        ]
+      },
+      "frame_builder_0_fb_ram_wea": {
+        "ports": [
+          "frame_builder_0/fb_ram_wea",
+          "blk_mem_gen_0/wea",
+          "ila_0/probe9"
+        ]
+      },
+      "frame_builder_0_font_addr": {
+        "ports": [
+          "frame_builder_0/font_addr",
+          "ila_0/probe6",
+          "blk_mem_gen_2/addra"
+        ]
+      },
+      "frame_builder_0_font_ena": {
+        "ports": [
+          "frame_builder_0/font_ena",
+          "ila_0/probe8",
+          "blk_mem_gen_2/ena"
+        ]
+      },
+      "frame_builder_0_text_addr": {
+        "ports": [
+          "frame_builder_0/text_bram_addr",
+          "blk_mem_gen_1/addrb",
+          "ila_0/probe7"
+        ]
+      },
+      "frame_builder_0_text_ena": {
+        "ports": [
+          "frame_builder_0/text_bram_ena",
+          "blk_mem_gen_1/enb",
+          "ila_0/probe2"
         ]
       },
       "lcd_driver_de_nv3047_0_backlight": {
@@ -693,7 +1091,8 @@
       "lcd_driver_de_nv3047_0_fb_addra": {
         "ports": [
           "lcd_driver_de_nv3047_0/fb_addra",
-          "blk_mem_gen_0/addrb"
+          "blk_mem_gen_0/addrb",
+          "ila_2/probe0"
         ]
       },
       "lcd_driver_de_nv3047_0_green": {
@@ -748,14 +1147,16 @@
         "ports": [
           "ps2_keyboard_to_ascii_0/ascii_code",
           "led_controller_0/ascii_code",
-          "keyboard_handler_0/ascii_code"
+          "ila_1/probe1",
+          "data_handler_0/ascii_code"
         ]
       },
       "ps2_keyboard_to_ascii_0_ascii_new": {
         "ports": [
           "ps2_keyboard_to_ascii_0/ascii_new",
           "led_controller_0/new_character",
-          "keyboard_handler_0/ascii_new"
+          "ila_1/probe2",
+          "data_handler_0/ascii_new"
         ]
       },
       "uart_rx_1": {
