@@ -17,7 +17,16 @@ entity data_handler is
         bram_dina      : out std_logic_vector(479 downto 0); -- 60 chars * 8 bits
         bram_douta     : in  std_logic_vector(479 downto 0);
         bram_ena       : out std_logic;
-        bram_wea       : out std_logic
+        bram_wea       : out std_logic;
+        -- UART signals
+        -- UART RX input
+        uart_rx_valid : in  std_logic;
+        uart_rx_data  : in  std_logic_vector(7 downto 0);
+
+        -- UART TX output
+        uart_tx_start : out std_logic;
+        uart_tx_data  : out std_logic_vector(7 downto 0);
+        uart_tx_ready  : in  std_logic
     );
 end data_handler;
 
@@ -36,7 +45,15 @@ architecture Behavioral of data_handler is
         SCROLL_READ3,
         SCROLL_SAMPLE,  -- sample bram_douta (cycle 2) and write to i-1
         SCROLL_WRITE_BOTTOM,
-        BRAM_WRITE
+        BRAM_WRITE,
+        UART_PREPARE,
+        UART_READ1,
+        UART_READ2,
+        UART_READ3,
+        UART_SEND_CHAR,
+        UART_WAIT_TX,
+        UART_SEND_CR,
+        UART_SEND_LF
     );
     signal state : state_t := IDLE;
 
@@ -58,7 +75,18 @@ architecture Behavioral of data_handler is
     signal addra_reg   : std_logic_vector(4 downto 0) := (others => '0');
     signal bram_dina_sig : std_logic_vector(479 downto 0) := (others => '0');
     signal bram_wea_sig  : std_logic := '0';
+    
+      --------------------------------------------------------------------
+    -- UART control (internal signals)
+    --------------------------------------------------------------------
+    signal uart_tx_ena : std_logic :='0';
+    signal uart_idx  : integer range 0 to 59 := 0;
+    signal uart_row  : std_logic_vector(479 downto 0);
 
+    signal uart_rx_sync1,uart_rx_sync2 : std_logic :='0';
+    signal uart_rx_rise_detected : std_logic :='0';
+    signal uart_rx_valid_prev : std_logic := '0';
+    signal uart_rx_rise       : std_logic := '0';
     --------------------------------------------------------------------
     -- Scroll helpers
     --------------------------------------------------------------------
@@ -84,7 +112,7 @@ begin
             ascii_fall_detected <= ascii_sync2 and not ascii_sync1;
         end if;
     end process;
-
+ 
     --------------------------------------------------------------------
     -- Main FSM
     --------------------------------------------------------------------
@@ -107,6 +135,7 @@ begin
 
                     when IDLE =>
                                 addra_reg <= "10000";       -- default address = bottom row (16)
+                                uart_tx_start <= '0'; --stop uart tx
                         if ascii_fall_detected = '1' then
                             if ascii_code = "0001101" then      -- Enter
                                 state <= ENTER;
@@ -115,7 +144,10 @@ begin
                             else
                                 state <= INPUT_CHAR;
                             end if;
+                      
                         end if;
+                      
+                            
 
                     when INPUT_CHAR =>
                         if cursor_col < 60 then
@@ -146,12 +178,18 @@ begin
                     when BRAM_WRITE =>
                         -- write strobe was asserted previous cycle; clear and return
                         bram_wea_sig <= '0';
+                        if uart_tx_ena = '1' then
+                        state <= UART_PREPARE;
+                        uart_tx_ena <='0';
+                        else 
                         state <= IDLE;
+                        end if;
 
                     when ENTER =>
                         -- start scroll: copy rows 1..16 -> 0..15
                         scroll_idx <= 1;
                         addra_reg <= std_logic_vector(to_unsigned(scroll_idx, 5));
+                        uart_tx_ena <='1';
                         state <= SCROLL_READ1;
 
                     -- set address for row(scroll_idx); bram_douta will be valid after 2 cycles
@@ -195,7 +233,55 @@ begin
                         row_buf <= (others => '0');
                         cursor_col <= 0;
                         state <= BRAM_WRITE;
+                        
+                        
+                   when UART_PREPARE =>
+                        -- read row 15 (the old row 16 after scrolling)
+                     addra_reg    <= "01111";  -- binary for 15
+                     bram_wea_sig <= '0';      -- read
+                     uart_idx     <= 0;
+                     state        <= UART_READ1;
+                     
+                    when UART_READ1 =>
+                    state <= UART_READ2;
+                    
+                     when UART_READ2 =>
+                    state <= UART_READ3;
+                    
+                     when UART_READ3 =>
+                    state <= UART_SEND_CHAR;
+                    
+                  when UART_SEND_CHAR =>
+                    -- capture full row
+                 uart_row <= bram_douta;
+                 uart_tx_data <= uart_row(479 downto 472);  -- first char    
+                     uart_tx_start <= '1';
+                     state         <= UART_WAIT_TX;
 
+                when UART_WAIT_TX =>
+
+                  if uart_tx_ready = '1' then
+                     if uart_idx < 59 then
+                           uart_idx <= uart_idx + 1;
+                            uart_tx_data <= uart_row(479 - uart_idx*8 downto 472 - uart_idx*8);
+                      else
+                          state <= UART_SEND_CR;  -- send cr/lf
+                      end if;
+                   end if;
+                   when UART_SEND_CR =>
+                      
+                       if uart_tx_ready = '0' then
+                          uart_tx_data <= x"0D"; -- CR
+                         
+                          state <= UART_SEND_LF;
+                       end if;
+
+                   when UART_SEND_LF =>
+                      
+                      if uart_tx_ready = '1' then
+                         uart_tx_data <= x"0A"; -- LF
+                       state <= IDLE;  -- complete
+                       end if;
                     when others =>
                         state <= IDLE;
 

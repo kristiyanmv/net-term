@@ -616,6 +616,25 @@
           },
           "bram_wea": {
             "direction": "O"
+          },
+          "uart_rx_valid": {
+            "direction": "I"
+          },
+          "uart_rx_data": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "uart_tx_start": {
+            "direction": "O"
+          },
+          "uart_tx_data": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "uart_tx_ready": {
+            "direction": "I"
           }
         }
       },
@@ -806,10 +825,16 @@
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "6"
+            "value": "13"
           },
           "C_PROBE0_WIDTH": {
             "value": "480"
+          },
+          "C_PROBE11_WIDTH": {
+            "value": "8"
+          },
+          "C_PROBE12_WIDTH": {
+            "value": "8"
           },
           "C_PROBE1_WIDTH": {
             "value": "7"
@@ -858,23 +883,30 @@
       },
       "UART_0_DIN_RDY": {
         "ports": [
-          "UART_0/DIN_RDY"
+          "UART_0/DIN_RDY",
+          "ila_1/probe9",
+          "data_handler_0/uart_tx_ready"
         ]
       },
       "UART_0_DOUT": {
         "ports": [
-          "UART_0/DOUT"
+          "UART_0/DOUT",
+          "ila_1/probe11",
+          "data_handler_0/uart_rx_data"
         ]
       },
       "UART_0_DOUT_VLD": {
         "ports": [
-          "UART_0/DOUT_VLD"
+          "UART_0/DOUT_VLD",
+          "ila_1/probe8",
+          "data_handler_0/uart_rx_valid"
         ]
       },
       "UART_0_UART_TXD": {
         "ports": [
           "UART_0/UART_TXD",
-          "uart_tx"
+          "uart_tx",
+          "ila_1/probe10"
         ]
       },
       "blk_mem_gen_0_doutb": {
@@ -952,12 +984,16 @@
       },
       "data_handler_0_uart_tx_data": {
         "ports": [
-          "UART_0/DIN"
+          "data_handler_0/uart_tx_data",
+          "UART_0/DIN",
+          "ila_1/probe12"
         ]
       },
       "data_handler_0_uart_tx_start": {
         "ports": [
-          "UART_0/DIN_VLD"
+          "data_handler_0/uart_tx_start",
+          "UART_0/DIN_VLD",
+          "ila_1/probe6"
         ]
       },
       "frame_builder_0_fb_ram_addr": {
@@ -1120,7 +1156,8 @@
       "uart_rx_1": {
         "ports": [
           "uart_rx",
-          "UART_0/UART_RXD"
+          "UART_0/UART_RXD",
+          "ila_1/probe7"
         ]
       }
     }

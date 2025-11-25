@@ -44,7 +44,12 @@
         "bram_dina": [ { "direction": "out", "size_left": "479", "size_right": "0" } ],
         "bram_douta": [ { "direction": "in", "size_left": "479", "size_right": "0" } ],
         "bram_ena": [ { "direction": "out" } ],
-        "bram_wea": [ { "direction": "out" } ]
+        "bram_wea": [ { "direction": "out" } ],
+        "uart_rx_valid": [ { "direction": "in" } ],
+        "uart_rx_data": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
+        "uart_tx_start": [ { "direction": "out" } ],
+        "uart_tx_data": [ { "direction": "out", "size_left": "7", "size_right": "0" } ],
+        "uart_tx_ready": [ { "direction": "in" } ]
       },
       "interfaces": {
         "reset": {
