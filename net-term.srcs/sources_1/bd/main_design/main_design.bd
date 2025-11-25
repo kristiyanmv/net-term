@@ -615,21 +615,7 @@
             "direction": "O"
           },
           "bram_wea": {
-            "direction": "O",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "100000000",
-                "value_src": "default_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "default_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "main_design_data_handler_0_0_bram_clk",
-                "value_src": "default_prop"
-              }
-            }
+            "direction": "O"
           }
         }
       },
@@ -703,21 +689,7 @@
             "right": "0"
           },
           "fb_ram_ena": {
-            "direction": "O",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "100000000",
-                "value_src": "default_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "default_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "main_design_frame_builder_0_0_font_bram_clk",
-                "value_src": "default_prop"
-              }
-            }
+            "direction": "O"
           },
           "fb_ram_wea": {
             "direction": "O"
@@ -750,21 +722,7 @@
             "right": "0"
           },
           "text_bram_ena": {
-            "direction": "O",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "100000000",
-                "value_src": "default_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "default_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "main_design_frame_builder_0_0_fb_ram_clk",
-                "value_src": "default_prop"
-              }
-            }
+            "direction": "O"
           }
         }
       },
@@ -857,7 +815,7 @@
             "value": "7"
           },
           "C_PROBE5_WIDTH": {
-            "value": "4"
+            "value": "5"
           }
         }
       },
@@ -949,11 +907,11 @@
           "ila_0/clk",
           "ila_1/clk",
           "blk_mem_gen_1/clka",
-          "data_handler_0/clk",
           "blk_mem_gen_2/clka",
           "blk_mem_gen_0/clka",
           "lcd_driver_de_nv3047_0/master_clock",
-          "frame_builder_0/clk"
+          "frame_builder_0/clk",
+          "data_handler_0/clk"
         ]
       },
       "clk_wiz_0_clk_out1": {

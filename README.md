@@ -26,9 +26,12 @@ The device is based on FPGA technology, ensuring low power consumption and reali
 - [ ] ~~Implement EEPROM memory read function~~
 > From recent developments, difficulties in understanding the xylix IP-s, lack of technical time I opted out the RAM/EEPROM implementations in favor to BRAM blocks for storing and managing frame buffer for the display, font data and other user data.
 - [x] Design a testing entity that cycles RGBW colors on the display to confirm proper work of the hardware.
-- [ ] Extend testing entity to a working display driver by fetch monochrome data (pixel state on/off) from a frame buffer and visualize it on the display.
-- [ ] Design a frame buffer builder that handles and builds a "terminal-like" interface by manipulating data sent to and from UART.
-
+- [x] Extend testing entity to a working display driver by fetch monochrome data (pixel state on/off) from a frame buffer and visualize it on the display.
+- [x] Design a frame buffer builder that handles and builds a "terminal-like" interface by manipulating data sent to and from UART.
+- [x] Implement scrolling feature for screen contents
+- [ ] Implement UART reading/writing functionality into main logic
+- [ ] Fix lowercase characters into font file
+- [ ] Investigate bugs
 ### Dependencies/Credits
 
 This project uses [uart-for-fpga](https://github.com/jakubcabal/uart-for-fpga) by @jakubcabal.
