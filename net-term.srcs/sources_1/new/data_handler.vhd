@@ -80,7 +80,7 @@ architecture Behavioral of data_handler is
     -- UART control (internal signals)
     --------------------------------------------------------------------
     signal uart_tx_ena : std_logic :='0';
-    signal uart_idx  : integer range 0 to 59 := 0;
+    signal uart_idx  : integer range 0 to 60 := 0;
     signal uart_row  : std_logic_vector(479 downto 0);
 
     signal uart_rx_sync1,uart_rx_sync2 : std_logic :='0';
@@ -91,6 +91,8 @@ architecture Behavioral of data_handler is
     -- Scroll helpers
     --------------------------------------------------------------------
     signal scroll_idx  : integer range 1 to 16 := 1; -- iterate 1..16
+    signal data_buf   : std_logic_vector(7 downto 0);
+    signal is_uart : std_logic := '0';
 begin
 
     --------------------------------------------------------------------
@@ -137,14 +139,26 @@ begin
                                 addra_reg <= "10000";       -- default address = bottom row (16)
                                 uart_tx_start <= '0'; --stop uart tx
                         if ascii_fall_detected = '1' then
+                        data_buf <= '0' & ascii_code;
+                      
                             if ascii_code = "0001101" then      -- Enter
                                 state <= ENTER;
+                                 uart_tx_ena <= '1';
                             elsif ascii_code = "0001000" then   -- Backspace
                                 state <= DELETE_CHAR;
                             else
                                 state <= INPUT_CHAR;
                             end if;
-                      
+                      elsif uart_rx_valid = '1'then
+                          -- new UART data received
+                          data_buf <= uart_rx_data;
+                          uart_tx_ena <= '0';
+                          if uart_rx_data = x"0D" then      -- Enter
+                                state <= ENTER;
+                            else
+                                state <= INPUT_CHAR;
+                            end if;
+                         
                         end if;
                       
                             
@@ -152,7 +166,7 @@ begin
                     when INPUT_CHAR =>
                         if cursor_col < 60 then
                             -- pack 7-bit ascii + leading zero into 8 bits at cursor
-                            row_buf((479 - cursor_col*8) downto (472 - cursor_col*8)) <= '0' & ascii_code;
+                            row_buf((479 - cursor_col*8) downto (472 - cursor_col*8)) <= data_buf;
                             cursor_col <= cursor_col + 1;
                             -- request write of bottom line
                             addra_reg <= "10000";
@@ -189,7 +203,6 @@ begin
                         -- start scroll: copy rows 1..16 -> 0..15
                         scroll_idx <= 1;
                         addra_reg <= std_logic_vector(to_unsigned(scroll_idx, 5));
-                        uart_tx_ena <='1';
                         state <= SCROLL_READ1;
 
                     -- set address for row(scroll_idx); bram_douta will be valid after 2 cycles
@@ -261,7 +274,7 @@ begin
                 when UART_WAIT_TX =>
 
                   if uart_tx_ready = '1' then
-                     if uart_idx < 59 then
+                     if uart_idx <= 59 then
                            uart_idx <= uart_idx + 1;
                             uart_tx_data <= uart_row(479 - uart_idx*8 downto 472 - uart_idx*8);
                       else

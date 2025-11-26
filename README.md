@@ -29,7 +29,7 @@ The device is based on FPGA technology, ensuring low power consumption and reali
 - [x] Extend testing entity to a working display driver by fetch monochrome data (pixel state on/off) from a frame buffer and visualize it on the display.
 - [x] Design a frame buffer builder that handles and builds a "terminal-like" interface by manipulating data sent to and from UART.
 - [x] Implement scrolling feature for screen contents
-- [ ] Implement UART reading/writing functionality into main logic
+- [x] Implement UART reading/writing functionality into main logic
 - [ ] Fix lowercase characters into font file
 - [ ] Investigate bugs
 ### Dependencies/Credits
