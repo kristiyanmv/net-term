@@ -50,6 +50,8 @@ architecture Behavioral of data_handler is
         UART_READ1,
         UART_READ2,
         UART_READ3,
+        UART_LOAD_ROW,
+        UART_LOAD_CHAR,
         UART_SEND_CHAR,
         UART_WAIT_TX,
         UART_SEND_CR,
@@ -80,13 +82,14 @@ architecture Behavioral of data_handler is
     -- UART control (internal signals)
     --------------------------------------------------------------------
     signal uart_tx_ena : std_logic :='0';
-    signal uart_idx  : integer range 0 to 60 := 0;
+    signal uart_idx  : integer range 0 to 63 := 0;
     signal uart_row  : std_logic_vector(479 downto 0);
 
     signal uart_rx_sync1,uart_rx_sync2 : std_logic :='0';
     signal uart_rx_rise_detected : std_logic :='0';
     signal uart_rx_valid_prev : std_logic := '0';
     signal uart_rx_rise       : std_logic := '0';
+    signal uart_byte : std_logic_vector (7 downto 0);
     --------------------------------------------------------------------
     -- Scroll helpers
     --------------------------------------------------------------------
@@ -138,6 +141,8 @@ begin
                     when IDLE =>
                                 addra_reg <= "10000";       -- default address = bottom row (16)
                                 uart_tx_start <= '0'; --stop uart tx
+                                uart_tx_ena <= '0';
+                                uart_byte <=x"00";
                         if ascii_fall_detected = '1' then
                         data_buf <= '0' & ascii_code;
                       
@@ -153,6 +158,7 @@ begin
                           -- new UART data received
                           data_buf <= uart_rx_data;
                           uart_tx_ena <= '0';
+                          uart_byte <=x"00";
                           if uart_rx_data = x"0D" then      -- Enter
                                 state <= ENTER;
                             else
@@ -240,10 +246,10 @@ begin
 
                     when SCROLL_WRITE_BOTTOM =>
                         addra_reg <= "10000";      -- bottom row index 16
+                        row_buf <= (others => '0');
                         bram_dina_sig <= row_buf;
                         bram_wea_sig <= '1';
                         -- clear buffer and cursor after write completes
-                        row_buf <= (others => '0');
                         cursor_col <= 0;
                         state <= BRAM_WRITE;
                         
@@ -262,39 +268,44 @@ begin
                     state <= UART_READ3;
                     
                      when UART_READ3 =>
-                    state <= UART_SEND_CHAR;
-                    
-                  when UART_SEND_CHAR =>
-                    -- capture full row
-                 uart_row <= bram_douta;
-                 uart_tx_data <= uart_row(479 downto 472);  -- first char    
-                     uart_tx_start <= '1';
-                     state         <= UART_WAIT_TX;
+                    state <= UART_LOAD_ROW;
+                    when UART_LOAD_ROW =>
+                    uart_row <=bram_douta;
+                    state <= UART_LOAD_CHAR;
+                    when UART_LOAD_CHAR =>
+                        uart_tx_start <='0';
+                        if uart_idx <=60 then 
+                        uart_byte <= uart_row(479 - uart_idx*8 downto 472 - uart_idx*8);
+                        uart_idx <= uart_idx +1;
+                        state <= UART_SEND_CHAR;
+                        elsif uart_idx = 61 then
+                        uart_byte <= x"0D";
+                        uart_idx <= uart_idx +1;
+                        state <= UART_SEND_CHAR;
+                        elsif uart_idx = 62 then
+                        uart_byte <= x"0A";
+                        state <= UART_SEND_CHAR;
+                         uart_idx <= uart_idx +1;
+                        else state <= IDLE;
+                        end if;
+                        
+                        
+                    when UART_SEND_CHAR =>
+                
+                        if uart_byte /= x"00" then 
+                             
+                            uart_tx_data <= uart_byte;
+                            state        <= UART_WAIT_TX;
+                            else 
+                            state <= UART_LOAD_CHAR;
+                            end if;
 
                 when UART_WAIT_TX =>
-
+                   
                   if uart_tx_ready = '1' then
-                     if uart_idx <= 59 then
-                           uart_idx <= uart_idx + 1;
-                            uart_tx_data <= uart_row(479 - uart_idx*8 downto 472 - uart_idx*8);
-                      else
-                          state <= UART_SEND_CR;  -- send cr/lf
-                      end if;
-                   end if;
-                   when UART_SEND_CR =>
-                      
-                       if uart_tx_ready = '0' then
-                          uart_tx_data <= x"0D"; -- CR
-                         
-                          state <= UART_SEND_LF;
-                       end if;
-
-                   when UART_SEND_LF =>
-                      
-                      if uart_tx_ready = '1' then
-                         uart_tx_data <= x"0A"; -- LF
-                       state <= IDLE;  -- complete
-                       end if;
+                      uart_tx_start <= '1';
+                      state <= UART_LOAD_CHAR;
+                          end if;
                     when others =>
                         state <= IDLE;
 
