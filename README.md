@@ -30,7 +30,7 @@ The device is based on FPGA technology, ensuring low power consumption and reali
 - [x] Design a frame buffer builder that handles and builds a "terminal-like" interface by manipulating data sent to and from UART.
 - [x] Implement scrolling feature for screen contents
 - [x] Implement UART reading/writing functionality into main logic
-- [ ] Fix lowercase characters into font file
+- [x] Fix lowercase characters into font file
 - [ ] Investigate bugs
 ### Dependencies/Credits
 
