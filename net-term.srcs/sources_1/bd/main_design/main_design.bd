@@ -611,10 +611,10 @@
             "left": "479",
             "right": "0"
           },
-          "bram_ena": {
+          "bram_wea": {
             "direction": "O"
           },
-          "bram_wea": {
+          "bram_ena": {
             "direction": "O"
           },
           "uart_rx_valid": {
@@ -625,6 +625,9 @@
             "left": "7",
             "right": "0"
           },
+          "uart_tx_ready": {
+            "direction": "I"
+          },
           "uart_tx_start": {
             "direction": "O"
           },
@@ -632,9 +635,6 @@
             "direction": "O",
             "left": "7",
             "right": "0"
-          },
-          "uart_tx_ready": {
-            "direction": "I"
           }
         }
       },
@@ -754,7 +754,7 @@
         "has_run_ip_tcl": "true",
         "parameters": {
           "Coe_File": {
-            "value": "../../../../test_data/font.coe"
+            "value": "../../../../test_data/font_fixed.coe"
           },
           "Fill_Remaining_Memory_Locations": {
             "value": "false"
@@ -825,7 +825,7 @@
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "13"
+            "value": "15"
           },
           "C_PROBE0_WIDTH": {
             "value": "480"
@@ -856,13 +856,22 @@
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "2"
+            "value": "11"
           },
           "C_PROBE0_WIDTH": {
             "value": "12"
           },
           "C_PROBE1_WIDTH": {
             "value": "32"
+          },
+          "C_PROBE2_WIDTH": {
+            "value": "8"
+          },
+          "C_PROBE3_WIDTH": {
+            "value": "8"
+          },
+          "C_PROBE4_WIDTH": {
+            "value": "8"
           }
         }
       }
@@ -941,8 +950,8 @@
           "blk_mem_gen_1/clka",
           "blk_mem_gen_2/clka",
           "blk_mem_gen_0/clka",
-          "lcd_driver_de_nv3047_0/master_clock",
           "frame_builder_0/clk",
+          "lcd_driver_de_nv3047_0/master_clock",
           "data_handler_0/clk"
         ]
       },
@@ -1055,31 +1064,36 @@
       "lcd_driver_de_nv3047_0_backlight": {
         "ports": [
           "lcd_driver_de_nv3047_0/backlight",
-          "backlight_0"
+          "backlight_0",
+          "ila_2/probe10"
         ]
       },
       "lcd_driver_de_nv3047_0_blue": {
         "ports": [
           "lcd_driver_de_nv3047_0/blue",
-          "blue_0"
+          "blue_0",
+          "ila_2/probe4"
         ]
       },
       "lcd_driver_de_nv3047_0_clk": {
         "ports": [
           "lcd_driver_de_nv3047_0/clk",
-          "clk_1"
+          "clk_1",
+          "ila_2/probe6"
         ]
       },
       "lcd_driver_de_nv3047_0_data_enable": {
         "ports": [
           "lcd_driver_de_nv3047_0/data_enable",
-          "data_enable_0"
+          "data_enable_0",
+          "ila_2/probe9"
         ]
       },
       "lcd_driver_de_nv3047_0_enable": {
         "ports": [
           "lcd_driver_de_nv3047_0/enable",
-          "enable_0"
+          "enable_0",
+          "ila_2/probe5"
         ]
       },
       "lcd_driver_de_nv3047_0_fb_addra": {
@@ -1092,25 +1106,29 @@
       "lcd_driver_de_nv3047_0_green": {
         "ports": [
           "lcd_driver_de_nv3047_0/green",
-          "green_0"
+          "green_0",
+          "ila_2/probe3"
         ]
       },
       "lcd_driver_de_nv3047_0_hsync": {
         "ports": [
           "lcd_driver_de_nv3047_0/hsync",
-          "hsync_0"
+          "hsync_0",
+          "ila_2/probe7"
         ]
       },
       "lcd_driver_de_nv3047_0_red": {
         "ports": [
           "lcd_driver_de_nv3047_0/red",
-          "red_0"
+          "red_0",
+          "ila_2/probe2"
         ]
       },
       "lcd_driver_de_nv3047_0_vsync": {
         "ports": [
           "lcd_driver_de_nv3047_0/vsync",
-          "vsync_0"
+          "vsync_0",
+          "ila_2/probe8"
         ]
       },
       "led_controller_0_led1": {
@@ -1128,13 +1146,15 @@
       "ps2_clk_1": {
         "ports": [
           "ps2_clk",
-          "ps2_keyboard_to_ascii_0/ps2_clk"
+          "ps2_keyboard_to_ascii_0/ps2_clk",
+          "ila_1/probe13"
         ]
       },
       "ps2_data_1": {
         "ports": [
           "ps2_data",
-          "ps2_keyboard_to_ascii_0/ps2_data"
+          "ps2_keyboard_to_ascii_0/ps2_data",
+          "ila_1/probe14"
         ]
       },
       "ps2_keyboard_to_ascii_0_ascii_code": {

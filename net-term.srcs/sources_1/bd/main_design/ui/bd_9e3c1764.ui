@@ -1,83 +1,83 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.89465",
-   "Default View_TopLeft":"99,866",
+   "Default View_ScaleFactor":"1.64938",
+   "Default View_TopLeft":"-127,698",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0
 #  -string -flagsOSRD
 preplace port port-id_clk_0 -pg 1 -lvl 0 -x -20 -y 580 -defaultsOSRD
-preplace port port-id_led1 -pg 1 -lvl 5 -x 1760 -y 750 -defaultsOSRD
-preplace port port-id_led2 -pg 1 -lvl 5 -x 1760 -y 880 -defaultsOSRD
+preplace port port-id_led1 -pg 1 -lvl 5 -x 1820 -y 750 -defaultsOSRD
+preplace port port-id_led2 -pg 1 -lvl 5 -x 1820 -y 880 -defaultsOSRD
 preplace port port-id_ps2_data -pg 1 -lvl 0 -x -20 -y 640 -defaultsOSRD
 preplace port port-id_ps2_clk -pg 1 -lvl 0 -x -20 -y 610 -defaultsOSRD
 preplace port port-id_uart_rx -pg 1 -lvl 0 -x -20 -y 530 -defaultsOSRD
-preplace port port-id_uart_tx -pg 1 -lvl 5 -x 1760 -y 400 -defaultsOSRD
-preplace port port-id_enable_0 -pg 1 -lvl 5 -x 1760 -y 1390 -defaultsOSRD
-preplace port port-id_clk_1 -pg 1 -lvl 5 -x 1760 -y 1420 -defaultsOSRD
-preplace port port-id_hsync_0 -pg 1 -lvl 5 -x 1760 -y 1450 -defaultsOSRD
-preplace port port-id_vsync_0 -pg 1 -lvl 5 -x 1760 -y 1480 -defaultsOSRD
-preplace port port-id_data_enable_0 -pg 1 -lvl 5 -x 1760 -y 1510 -defaultsOSRD
-preplace port port-id_backlight_0 -pg 1 -lvl 5 -x 1760 -y 1540 -defaultsOSRD
-preplace portBus red_0 -pg 1 -lvl 5 -x 1760 -y 1330 -defaultsOSRD
-preplace portBus green_0 -pg 1 -lvl 5 -x 1760 -y 1360 -defaultsOSRD
-preplace portBus blue_0 -pg 1 -lvl 5 -x 1760 -y 1570 -defaultsOSRD
+preplace port port-id_uart_tx -pg 1 -lvl 5 -x 1820 -y 400 -defaultsOSRD
+preplace port port-id_enable_0 -pg 1 -lvl 5 -x 1820 -y 1390 -defaultsOSRD
+preplace port port-id_clk_1 -pg 1 -lvl 5 -x 1820 -y 1420 -defaultsOSRD
+preplace port port-id_hsync_0 -pg 1 -lvl 5 -x 1820 -y 1450 -defaultsOSRD
+preplace port port-id_vsync_0 -pg 1 -lvl 5 -x 1820 -y 1480 -defaultsOSRD
+preplace port port-id_data_enable_0 -pg 1 -lvl 5 -x 1820 -y 1510 -defaultsOSRD
+preplace port port-id_backlight_0 -pg 1 -lvl 5 -x 1820 -y 1540 -defaultsOSRD
+preplace portBus red_0 -pg 1 -lvl 5 -x 1820 -y 1330 -defaultsOSRD
+preplace portBus green_0 -pg 1 -lvl 5 -x 1820 -y 1360 -defaultsOSRD
+preplace portBus blue_0 -pg 1 -lvl 5 -x 1820 -y 1570 -defaultsOSRD
 preplace inst ps2_keyboard_to_ascii_0 -pg 1 -lvl 1 -x 220 -y 610 -defaultsOSRD
-preplace inst led_controller_0 -pg 1 -lvl 3 -x 1260 -y 990 -defaultsOSRD
-preplace inst UART_0 -pg 1 -lvl 3 -x 1260 -y 450 -defaultsOSRD
+preplace inst led_controller_0 -pg 1 -lvl 3 -x 1280 -y 1010 -defaultsOSRD
+preplace inst UART_0 -pg 1 -lvl 3 -x 1280 -y 450 -defaultsOSRD
 preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 220 -y 1070 -defaultsOSRD
-preplace inst blk_mem_gen_0 -pg 1 -lvl 3 -x 1260 -y 1200 -defaultsOSRD
+preplace inst blk_mem_gen_0 -pg 1 -lvl 3 -x 1280 -y 1220 -defaultsOSRD
 preplace inst lcd_driver_de_nv3047_0 -pg 1 -lvl 2 -x 730 -y 1410 -defaultsOSRD
 preplace inst data_handler_0 -pg 1 -lvl 2 -x 730 -y 410 -defaultsOSRD
-preplace inst blk_mem_gen_1 -pg 1 -lvl 3 -x 1260 -y 170 -defaultsOSRD
+preplace inst blk_mem_gen_1 -pg 1 -lvl 3 -x 1280 -y 170 -defaultsOSRD
 preplace inst frame_builder_0 -pg 1 -lvl 1 -x 220 -y 870 -defaultsOSRD
 preplace inst blk_mem_gen_2 -pg 1 -lvl 2 -x 730 -y 1000 -defaultsOSRD
 preplace inst ila_0 -pg 1 -lvl 2 -x 730 -y 720 -defaultsOSRD
-preplace inst ila_1 -pg 1 -lvl 3 -x 1260 -y 740 -defaultsOSRD
-preplace inst ila_2 -pg 1 -lvl 4 -x 1590 -y 1020 -defaultsOSRD
-preplace netloc Net 1 2 1 1090 1300n
+preplace inst ila_1 -pg 1 -lvl 3 -x 1280 -y 750 -defaultsOSRD
+preplace inst ila_2 -pg 1 -lvl 4 -x 1680 -y 1070 -defaultsOSRD
+preplace netloc Net 1 2 1 900 1320n
 preplace netloc Net1 1 0 2 40 1130 480J
-preplace netloc UART_0_DIN_RDY 1 1 3 570 880 1100 1390 1420
-preplace netloc UART_0_DOUT 1 1 3 560 890 1110 1360 1400
-preplace netloc UART_0_DOUT_VLD 1 1 3 550 270 1060 340 1410
-preplace netloc UART_0_UART_TXD 1 2 3 1120 1370 1440J 400 N
-preplace netloc blk_mem_gen_0_doutb 1 1 3 550 1570 1080 1440 1480
+preplace netloc UART_0_DIN_RDY 1 1 3 570 880 970 1380 1430
+preplace netloc UART_0_DOUT 1 1 3 560 890 1050 1440 1420
+preplace netloc UART_0_DOUT_VLD 1 1 3 550 250 1090 340 1440
+preplace netloc UART_0_UART_TXD 1 2 3 1140 1390 1460J 400 N
+preplace netloc blk_mem_gen_0_doutb 1 1 3 550 1570 1040 1510 1520
 preplace netloc blk_mem_gen_1_douta 1 1 2 570 140 NJ
 preplace netloc blk_mem_gen_1_doutb 1 0 3 30 690 430J 260 N
-preplace netloc clk_0_1 1 0 3 20 520 470 250 1050
-preplace netloc clk_wiz_0_clk_out1 1 1 3 420 1250 1060 1400 1460
-preplace netloc data_handler_0_bram_addra 1 2 1 1080 80n
-preplace netloc data_handler_0_bram_dina 1 2 1 1110 120n
-preplace netloc data_handler_0_bram_ena 1 2 1 1090 160n
-preplace netloc data_handler_0_bram_wea 1 2 1 1120 180n
-preplace netloc data_handler_0_uart_tx_data 1 2 1 1040 460n
-preplace netloc data_handler_0_uart_tx_start 1 2 1 1070 440n
-preplace netloc frame_builder_0_fb_ram_addr 1 1 2 490J 1100 930
-preplace netloc frame_builder_0_fb_ram_dout 1 1 2 500J 1110 900
-preplace netloc frame_builder_0_fb_ram_ena 1 1 2 510J 1120 890
-preplace netloc frame_builder_0_fb_ram_wea 1 1 2 540J 900 910
-preplace netloc frame_builder_0_font_addr 1 1 1 520 760n
+preplace netloc clk_0_1 1 0 3 10 500 470 220 1070
+preplace netloc clk_wiz_0_clk_out1 1 1 3 420 1250 1020 1400 1480
+preplace netloc data_handler_0_bram_addra 1 2 1 1100 80n
+preplace netloc data_handler_0_bram_dina 1 2 1 1130 120n
+preplace netloc data_handler_0_bram_ena 1 2 1 1110 160n
+preplace netloc data_handler_0_bram_wea 1 2 1 1140 180n
+preplace netloc data_handler_0_uart_tx_data 1 2 1 1060 460n
+preplace netloc data_handler_0_uart_tx_start 1 2 1 1080 440n
+preplace netloc frame_builder_0_fb_ram_addr 1 1 2 490J 1110 980
+preplace netloc frame_builder_0_fb_ram_dout 1 1 2 500J 1120 900
+preplace netloc frame_builder_0_fb_ram_ena 1 1 2 520J 900 930
+preplace netloc frame_builder_0_fb_ram_wea 1 1 2 540J 1100 920
+preplace netloc frame_builder_0_font_addr 1 1 1 510 760n
 preplace netloc frame_builder_0_font_ena 1 1 1 530 800n
-preplace netloc frame_builder_0_text_addr 1 1 2 420J 240 930
-preplace netloc frame_builder_0_text_ena 1 1 2 460J 280 N
-preplace netloc lcd_driver_de_nv3047_0_backlight 1 2 3 890J 1490 NJ 1490 1690
-preplace netloc lcd_driver_de_nv3047_0_blue 1 2 3 910J 1500 NJ 1500 1680
-preplace netloc lcd_driver_de_nv3047_0_clk 1 2 3 930J 1420 NJ 1420 N
-preplace netloc lcd_driver_de_nv3047_0_data_enable 1 2 3 890J 1460 NJ 1460 1700
-preplace netloc lcd_driver_de_nv3047_0_enable 1 2 3 940J 1430 NJ 1430 1680
-preplace netloc lcd_driver_de_nv3047_0_fb_addra 1 2 2 1070 1470 1470
-preplace netloc lcd_driver_de_nv3047_0_green 1 2 3 960J 1380 NJ 1380 1700
-preplace netloc lcd_driver_de_nv3047_0_hsync 1 2 3 920J 1450 NJ 1450 N
-preplace netloc lcd_driver_de_nv3047_0_red 1 2 3 950J 1410 1490J 1370 1680
-preplace netloc lcd_driver_de_nv3047_0_vsync 1 2 3 900J 1480 NJ 1480 N
-preplace netloc led_controller_0_led1 1 3 2 1430J 930 1680
-preplace netloc led_controller_0_led2 1 3 2 1450J 940 1700
-preplace netloc ps2_clk_1 1 0 1 NJ 610
-preplace netloc ps2_data_1 1 0 1 30J 630n
-preplace netloc ps2_keyboard_to_ascii_0_ascii_code 1 1 2 450 550 1030
-preplace netloc ps2_keyboard_to_ascii_0_ascii_new 1 1 2 440 560 1020
-preplace netloc uart_rx_1 1 0 3 NJ 530 480J 540 1100J
-levelinfo -pg 1 -20 220 730 1260 1590 1760
-pagesize -pg 1 -db -bbox -sgen -130 0 1910 1590
+preplace netloc frame_builder_0_text_addr 1 1 2 420J 230 1090
+preplace netloc frame_builder_0_text_ena 1 1 2 460J 240 1060
+preplace netloc lcd_driver_de_nv3047_0_backlight 1 2 3 890J 1500 1580J 1480 1780
+preplace netloc lcd_driver_de_nv3047_0_blue 1 2 3 930J 1520 1550J 1520 1770
+preplace netloc lcd_driver_de_nv3047_0_clk 1 2 3 990J 1420 1540J 1420 N
+preplace netloc lcd_driver_de_nv3047_0_data_enable 1 2 3 910J 1480 1560J 1490 1770
+preplace netloc lcd_driver_de_nv3047_0_enable 1 2 3 980J 1460 1530J 1390 N
+preplace netloc lcd_driver_de_nv3047_0_fb_addra 1 2 2 1030 1490 1500
+preplace netloc lcd_driver_de_nv3047_0_green 1 2 3 1000J 1430 1510J 1360 N
+preplace netloc lcd_driver_de_nv3047_0_hsync 1 2 3 940J 1450 1570J 1450 N
+preplace netloc lcd_driver_de_nv3047_0_red 1 2 3 1010J 1410 1490J 1330 N
+preplace netloc lcd_driver_de_nv3047_0_vsync 1 2 3 920J 1470 1590J 1470 1790
+preplace netloc led_controller_0_led1 1 3 2 1450J 890 1780
+preplace netloc led_controller_0_led2 1 3 2 1470J 900 1790
+preplace netloc ps2_clk_1 1 0 3 20J 510 540 550 990
+preplace netloc ps2_data_1 1 0 3 30J 520 480 560 980
+preplace netloc ps2_keyboard_to_ascii_0_ascii_code 1 1 2 440 270 1020
+preplace netloc ps2_keyboard_to_ascii_0_ascii_new 1 1 2 450 280 1000
+preplace netloc uart_rx_1 1 0 3 NJ 530 520J 540 1120J
+levelinfo -pg 1 -20 220 730 1280 1680 1820
+pagesize -pg 1 -db -bbox -sgen -130 0 1970 1590
 "
 }
 {
